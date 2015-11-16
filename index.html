@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Bulletproof Validation</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="build/custom.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Bulletproof Validation</h1>
+		<p>About the fact that all are silent</p>
+	</header>
+	<section class="slide cover" id="cover"><div class="cover-wrapper">
+		<i class="mjs-logo"></i>
+		<h2>Bulletproof Validation</h2>
+		<p class="description">About the fact that all are silent</p>
+		<div class="credits">
+			<div class="credits__name">Anton @isnifer Kuznetsov</div>
+			<div class="credits__date">11/26/2015</div>
+		</div>
+	</div></section>
+	<section class="slide"><div>
+		<h2>About me</h2>
+		<img src="pictures/isnifer.jpg" alt="Anton Kuznetsov" class="photo">
+		<ul>
+			<li>Name: Anton Kuznetsov</li>
+			<li>Position: Front-end Developer</li>
+			<li>Experience: >5 years</li>
+			<li>Company: Action Digital</li>
+			<li>Location: Moscow</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>Hype</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Main Problem</h2>
+		<ul>
+			<li>Strong desire to move from Angular to React</li>
+			<li>Need to transparent reuse current codebase</li>
+		</ul>
+	</div></section>
+	<section class="slide cover"><div>
+		<h2>Pahom, come back!</h2>
+		<img src="pictures/pahom.jpg" alt="Pahom, come back!" />
+	</div></section>
+	<section class="slide cover doubts"><div>
+		<h2>Do you still have doubts?</h2>
+		<ol>
+			<li>React is slooooow</li>
+			<li>React even not 1.0</li>
+			<li>Who has React in production, except FB, IG…?</li>
+		</ol>
+	</div></section>
+	<section class="slide cover"><div class="fool-wrapper">
+		<div class="fool">How dare you compare Angular and React ?!</div>
+		<img src="pictures/fool.jpg" alt="" />
+	</div></section>
+	<section class="slide"><div>
+		<h2>What I thought?</h2>
+		<ol>
+			<li>Find equivalent to the current code solutions</li>
+			<li>Write my own solution, if this is not</li>
+			<li>Prepare presentation</li>
+			<li>Create example for this solution</li>
+			<li>Convince to be on light side of the Force</li>
+		</ol>
+	</div></section>
+	<section class="slide cover yoda"><div>
+	</div></section>
+	<section class="slide cover"><div>
+		<img src="pictures/jackie-chan.png" />
+		<div class="forms">
+			<span class="forms__text">Forms</span>
+		</div>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What did I want?</h2>
+		<strong>Angular approach:</strong>
+		<ul>
+			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
+			<li>Each field has independent validator</li>
+			<li>Form knows what fields are invalid</li>
+			<li>Form has API to manage validation (auto or manual)</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Existing Solutions</h2>
+		<ul>
+			<li>
+				<a href="https://github.com/insin/newforms">
+					insin/newforms
+				</a>
+			</li>
+			<li>
+				<a href="https://github.com/prometheusresearch/react-forms">
+					prometheusresearch/react-forms
+				</a>
+			</li>
+			<li>
+				<a href="https://github.com/christianalfoni/formsy-react">
+					christianalfoni/formsy-react
+				</a>
+			</li>
+			<li>
+				<a href="https://github.com/gcanti/tcomb-form">
+					gcanti/tcomb-form
+				</a>
+			</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<strong>Benefits:</strong>
+		<ul>
+			<li>Possibility to override predefined UI-components </li>
+			<li>Predefined data types (String, Number, Boolean)</li>
+			<li>Possibility to override predefined UI-components</li>
+		</ul>
+		<strong>Drawbacks:</strong>
+		<ul>
+			<li>Schema-validation</li>
+			<li>Massive API</li>
+			<li>Mixins</li>
+			<li>Long long long long loooooong documentation</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2><a href="https://github.com/deepsweet/valya">Valya</a></h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Valya</h2>
+		<strong>Brought to you by:</strong>
+		<ul>
+			<li>
+				<a href="https://twitter.com/deepsweet">Kir Belevich</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/mistadikay_en">Denis Koltsov</a>
+			</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Create Validator</h2>
+		<pre>
+			<code>import React, { Component } from 'react';</code>
+			<code>import <mark>Valya</mark> from 'valya';</code>
+			<code> </code>
+			<code><mark>@Valya</mark></code>
+			<code>class Validator extends Component {</code>
+			<code><mark class="comment">// ...</mark></code>
+			<code>}</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Rendering Error</h2>
+		<pre>
+			<code>_renderError() {</code>
+			<code>	if (!this.props.enabled || this.props.isValid) {</code>
+			<code>		return <mark>null</mark>;</code>
+			<code>	}</code>
+			<code>	return (</code>
+			<code>		&lt;span className="validator__error" key="error"&gt;</code>
+			<code>			<mark>{this.props.validationErrorMessage}</mark></code>
+			<code>		&lt;/span&gt;</code>
+			<code>	);</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Rendering Validator</h2>
+		<pre>
+			<code>render () {</code>
+		    <code>    return (</code>
+		    <code>        &lt;span className="validator"&gt;</code>
+		    <code>            &lt;span className="validator__target"&gt;</code>
+		    <code>                <mark>{this.props.children}</mark></code>
+		    <code>            &lt;/span&gt;</code>
+		    <code>            <mark>{this._renderError()}</mark></code>
+		    <code>        &lt;/span&gt;</code>
+		    <code>    );</code>
+		    <code>}</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Usage: Props</h2>
+		<pre>
+			<code>&lt;Validator</code>
+	        <code>	<mark>value</mark>={this.state.value}</code>
+	        <code>	<mark>validators</mark>={ <mark class="comment">// ...</mark> }</code>
+	        <code>	onEnd={(isValid, message) => {</code>
+	        <code>		console.log('validation end:', isValid, message);</code>
+	        <code>	}}&gt;</code>
+	        <code>	&lt;input type="text" <mark>value</mark>={this.state.value} </code>
+	        <code>		onChange={(e) => { this.setState({value: e.target.value}) }} /&gt;</code>
+	        <code>&lt;/Validator&gt;
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Usage: Validators</h2>
+		<pre>
+	        <code>[{</code>
+	        <code>	validator(value, params) {</code>
+	        <code>		if (value) return Promise.resolve();</code>
+	        <code> </code>
+	        <code>		return Promise.reject(params.message);</code>
+	        <code>	},</code>
+	        <code>	params: {</code>
+	        <code>		message: 'Field is required'</code>
+	        <code>	}</code>
+	        <code>}]</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What did I want?</h2>
+		<strong>Angular approach:</strong>
+		<ul>
+			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
+			<li><s>Each field has independent validator</s></li>
+			<li>Form knows what fields are invalid</li>
+			<li>Form has API to manage validation (auto or manual)</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2><a href="https://github.com/isnifer/foma">Foma</a></h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Foma Usage</h2>
+		<pre>
+			<code>import React, { Component } from 'react';</code>
+			<code>import <mark>Valya</mark> from 'valya';</code>
+			<code>import <mark>Foma</mark> from 'foma';</code>
+			<code> </code>
+			<code><mark>@Foma</mark></code>
+			<code>class FormDemo extends Component {</code>
+			<code>	<mark class="comment">// Write your own form as you want</mark></code>
+			<code>	<mark class="comment">// Use Valya</mark></code>
+			<code>}</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Foma API (WIP)</h2>
+		<span><strong>FormDemo</strong> got some "special" props:</span>
+		<ul>
+			<li>{Boolean} isValid</li>
+			<li>{Boolean} isInvalid</li>
+			<li>{Boolean} isValidating</li>
+            <li>{Boolean} isWarnVisible</li>
+            <li>{Array} invalidFields</li>
+            <li>{Array} childrenInvalidFields</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Foma API (WIP)</h2>
+		<span><strong>FormDemo</strong> got some "special" props:</span>
+		<ul>
+			foma:
+			<ul>
+				<li>setChildrenValidationInfo()</li>
+			    <li>viewWarning()</li>
+                <li>renderWarning()</li>
+			</ul>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What did I want?</h2>
+		<strong>Angular approach:</strong>
+		<ul>
+			<li><s>Form has 3 flags: isValid, isInvalid, isValidating</s></li>
+			<li><s>Each field has independent validator</s></li>
+			<li><s>Form knows what fields are invalid</s></li>
+			<li><s>Form has API to manage validation (auto or manual)</s></li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Thank you!</h2>
+		<strong>Find me on social:</strong>
+		<ul>
+			<li><a href="https://twitter.com/isnifer">Twitter</a></li>
+			<li><a href="https://github.com/isnifer">Github</a></li>
+			<li><a href="https://telegram.me/isnifer">Telegram</a></li>
+			<li>Skype</li>
+		</ul>
+		<h2>The end! Questions?</h2>
+	</div></section>
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2015 Anton Kuznetsov, Action Digital -->
+</body>
+</html>
