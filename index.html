@@ -27,41 +27,25 @@
 		<h2>About me</h2>
 		<img src="pictures/isnifer.jpg" alt="Anton Kuznetsov" class="photo">
 		<ul>
-			<li>Name: Anton Kuznetsov</li>
-			<li>Position: Front-end Developer</li>
-			<li>Experience: >5 years</li>
-			<li>Company: Action Digital</li>
-			<li>Location: Moscow</li>
+			<li>Anton Kuznetsov</li>
+			<li>Front-end Developer</li>
+			<li>5+ years</li>
+			<li>Action Digital</li>
+			<li>Moscow, Russia</li>
 		</ul>
 	</div></section>
 	<section class="slide shout"><div>
 		<h2>Hype</h2>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Main Problem</h2>
+		<h2>What do I want?</h2>
 		<ul>
 			<li>Strong desire to move from Angular to React</li>
 			<li>Need to transparent reuse current codebase</li>
 		</ul>
 	</div></section>
-	<section class="slide cover"><div>
-		<h2>Pahom, come back!</h2>
-		<img src="pictures/pahom.jpg" alt="Pahom, come back!" />
-	</div></section>
-	<section class="slide cover doubts"><div>
-		<h2>Do you still have doubts?</h2>
-		<ol>
-			<li>React is slooooow</li>
-			<li>React even not 1.0</li>
-			<li>Who has React in production, except FB, IG…?</li>
-		</ol>
-	</div></section>
-	<section class="slide cover"><div class="fool-wrapper">
-		<div class="fool">How dare you compare Angular and React ?!</div>
-		<img src="pictures/fool.jpg" alt="" />
-	</div></section>
 	<section class="slide"><div>
-		<h2>What I thought?</h2>
+		<h2>What should I to do?</h2>
 		<ol>
 			<li>Find equivalent to the current code solutions</li>
 			<li>Write my own solution, if this is not</li>
@@ -79,18 +63,26 @@
 		</div>
 	</div></section>
 	<section class="slide"><div>
-		<h2>What did I want?</h2>
+		<h2>What did I expect?</h2>
 		<strong>Angular approach:</strong>
 		<ul>
-			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
 			<li>Each field has independent validator</li>
+			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
 			<li>Form knows what fields are invalid</li>
 			<li>Form has API to manage validation (auto or manual)</li>
 		</ul>
 	</div></section>
 	<section class="slide"><div>
 		<h2>What did I want?</h2>
-		<img src="pictures/angular-example.png" class="angular" alt="Angular approach" />
+		<strong>The simplest API</strong>
+		<pre>
+			<code>{</code>
+			<code>	isValid: <mark class="bool">false</mark>,</code>
+			<code>	isInvalid: <mark class="bool">true</mark>,</code>
+			<code>	isValidating: <mark class="bool">false</mark>,</code>
+			<code>	invalidFields: [<mark class="string">'username'</mark>]</code>
+			<code>}</code>
+		</pre>
 	</div></section>
 	<section class="slide"><div>
 		<h2>Existing Solutions</h2>
@@ -134,25 +126,13 @@
 		<h2><a href="https://github.com/deepsweet/valya">Valya</a></h2>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Valya</h2>
-		<strong>Brought to you by:</strong>
-		<ul>
-			<li>
-				<a href="https://twitter.com/deepsweet">Kir Belevich</a>
-			</li>
-			<li>
-				<a href="https://twitter.com/mistadikay_en">Denis Koltsov</a>
-			</li>
-		</ul>
-	</div></section>
-	<section class="slide"><div>
 		<h2>Create Validator</h2>
 		<pre>
-			<code>import React, { Component } from 'react';</code>
-			<code>import <mark>Valya</mark> from 'valya';</code>
+			<code><mark class="keyword">import</mark> React, { Component } from <mark class="string">'react'</mark>;</code>
+			<code><mark class="keyword">import</mark> <mark>Valya</mark> from <mark class="string">'valya'</mark>;</code>
 			<code> </code>
 			<code><mark>@Valya</mark></code>
-			<code>class Validator extends Component {</code>
+			<code><mark class="keyword">class</mark> <mark class="bool">Validator</mark> <mark class="keyword">extends</mark> <mark class="bool">Component</mark> {</code>
 			<code><mark class="comment">// ...</mark></code>
 			<code>}</code>
 		</pre>
@@ -160,13 +140,13 @@
 	<section class="slide"><div>
 		<h2>Rendering Error</h2>
 		<pre>
-			<code>_renderError() {</code>
-			<code>	if (!this.props.enabled || this.props.isValid) {</code>
-			<code>		return <mark>null</mark>;</code>
+			<code>renderError() {</code>
+			<code>	<mark class="keyword">if</mark> (!<mark class="var">this</mark>.props.enabled <mark class="keyword">||</mark> <mark class="var">this</mark>.props.isValid) {</code>
+			<code>		<mark class="keyword">return</mark> <mark class="bool">null</mark>;</code>
 			<code>	}</code>
-			<code>	return (</code>
-			<code>		&lt;span className="validator__error" key="error"&gt;</code>
-			<code>			<mark>{this.props.validationErrorMessage}</mark></code>
+			<code>	<mark class="keyword">return</mark> (</code>
+			<code>		&lt;span className=<mark class="string">"validator__error"</mark> key=<mark class="string">"error"</mark>&gt;</code>
+			<code>			<mark>{<mark class="var">this</mark>.props.validationErrorMessage}</mark></code>
 			<code>		&lt;/span&gt;</code>
 			<code>	);</code>
 			<code>}</code>
@@ -176,12 +156,12 @@
 		<h2>Rendering Validator</h2>
 		<pre>
 			<code>render () {</code>
-		    <code>    return (</code>
-		    <code>        &lt;span className="validator"&gt;</code>
-		    <code>            &lt;span className="validator__target"&gt;</code>
-		    <code>                <mark>{this.props.children}</mark></code>
+		    <code>    <mark class="keyword">return</mark> (</code>
+		    <code>        &lt;span className=<mark class="string">"validator"</mark>&gt;</code>
+		    <code>            &lt;span className=<mark class="string">"validator__target"</mark>&gt;</code>
+		    <code>                <mark>{<mark class="var">this</mark>.props.children}</mark></code>
 		    <code>            &lt;/span&gt;</code>
-		    <code>            <mark>{this._renderError()}</mark></code>
+		    <code>            <mark>{<mark class="var">this</mark>.renderError()}</mark></code>
 		    <code>        &lt;/span&gt;</code>
 		    <code>    );</code>
 		    <code>}</code>
@@ -190,15 +170,15 @@
 	<section class="slide"><div>
 		<h2>Usage: Props</h2>
 		<pre>
-			<code>&lt;Validator</code>
-	        <code>	<mark>value</mark>={this.state.value}</code>
-	        <code>	<mark>validators</mark>={ <mark class="comment">// ...</mark> }</code>
-	        <code>	onEnd={(isValid, message) => {</code>
-	        <code>		console.log('validation end:', isValid, message);</code>
-	        <code>	}}&gt;</code>
-	        <code>	&lt;input type="text" <mark>value</mark>={this.state.value} </code>
-	        <code>		onChange={(e) => { this.setState({value: e.target.value}) }} /&gt;</code>
-	        <code>&lt;/Validator&gt;
+			<code><mark class="keyword">&lt;</mark><mark class="bool">Validator</mark></code>
+	        <code>	<mark>value</mark><mark class="keyword">=</mark>{<mark class="var">this</mark>.state.value}</code>
+	        <code>	<mark>validators</mark><mark class="keyword">=</mark>{ <mark class="comment">// ...</mark> }</code>
+	        <code>	onEnd={(isValid, message) <mark class="keyword">=></mark> {</code>
+	        <code>		console.log(<mark class="string">'validation end:'</mark>, isValid, message);</code>
+	        <code>	}}<mark class="keyword">&gt;</mark></code>
+	        <code>	<mark class="keyword">&lt;</mark><mark class="bool">input</mark> type=<mark class="string">"text"</mark> <mark>value</mark>={<mark class="var">this</mark>.state.value} </code>
+	        <code>		onChange={e => <mark class="var">this</mark>.setState({value: e.target.value})} /<mark class="keyword">&gt;</mark></code>
+	        <code><mark class="keyword">&lt;</mark>/<mark class="bool">Validator</mark><mark class="keyword">&gt;</mark>
 		</pre>
 	</div></section>
 	<section class="slide"><div>
@@ -206,12 +186,12 @@
 		<pre>
 	        <code>[{</code>
 	        <code>	validator(value, params) {</code>
-	        <code>		if (value) return Promise.resolve();</code>
+	        <code>		<mark class="keyword">if</mark> (value) <mark class="keyword">return</mark> <mark class="bool">Promise</mark>.resolve();</code>
 	        <code> </code>
-	        <code>		return Promise.reject(params.message);</code>
+	        <code>		<mark class="keyword">return</mark> <mark class="bool">Promise</mark>.reject(params.message);</code>
 	        <code>	},</code>
 	        <code>	params: {</code>
-	        <code>		message: 'Field is required'</code>
+	        <code>		message: <mark class="string">'Field is required'</mark></code>
 	        <code>	}</code>
 	        <code>}]</code>
 		</pre>
@@ -220,8 +200,8 @@
 		<h2>What did I want?</h2>
 		<strong>Angular approach:</strong>
 		<ul>
-			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
 			<li><s>Each field has independent validator</s></li>
+			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
 			<li>Form knows what fields are invalid</li>
 			<li>Form has API to manage validation (auto or manual)</li>
 		</ul>
@@ -232,12 +212,12 @@
 	<section class="slide"><div>
 		<h2>Foma Usage</h2>
 		<pre>
-			<code>import React, { Component } from 'react';</code>
-			<code>import <mark>Valya</mark> from 'valya';</code>
-			<code>import <mark>Foma</mark> from 'foma';</code>
+			<code><mark class="keyword">import</mark> React, { Component } from <mark class="string">'react'</mark>;</code>
+			<code><mark class="keyword">import</mark> <mark>Valya</mark> from <mark class="string">'valya'</mark>;</code>
+			<code><mark class="keyword">import</mark> <mark>Foma</mark> from <mark class="string">'foma'</mark>;</code>
 			<code> </code>
 			<code><mark>@Foma</mark></code>
-			<code>class FormDemo extends Component {</code>
+			<code><mark class="keyword">class</mark> <mark class="bool">FormDemo</mark> <mark class="keyword">extends</mark> <mark class="bool">Component</mark> {</code>
 			<code>	<mark class="comment">// Write your own form as you want</mark></code>
 			<code>	<mark class="comment">// Use Valya</mark></code>
 			<code>}</code>
@@ -250,23 +230,11 @@
 			<li>{Boolean} isValid</li>
 			<li>{Boolean} isInvalid</li>
 			<li>{Boolean} isValidating</li>
-            <li>{Boolean} isWarnVisible</li>
             <li>{Array} invalidFields</li>
-            <li>{Array} childrenInvalidFields</li>
 		</ul>
 	</div></section>
-	<section class="slide"><div>
-		<h2>Foma API (WIP)</h2>
-		<span><strong>FormDemo</strong> got some "special" props:</span>
-		<ul>
-			<li>foma:
-				<ul>
-					<li>setChildrenValidationInfo()</li>
-			    	<li>viewWarning()</li>
-                	<li>renderWarning()</li>
-				</ul>
-			</li>
-		</ul>
+	<section class="slide shout"><div>
+		<h2><a href="https://isnifer.github.io/foma/">Demo</a></h2>
 	</div></section>
 	<section class="slide"><div>
 		<h2>What did I want?</h2>
