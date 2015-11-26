@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Bulletproof Validation</title>
+	<title>Bulletproof Validation forms in React</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -11,15 +11,15 @@
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>Bulletproof Validation</h1>
+		<h1>Bulletproof Validation forms in React</h1>
 		<p>About the fact that all are silent</p>
 	</header>
 	<section class="slide cover" id="cover"><div class="cover-wrapper">
 		<i class="mjs-logo"></i>
-		<h2>Bulletproof Validation</h2>
+		<h2>Bulletproof Validation <br>forms in React</h2>
 		<p class="description">About the fact that all are silent</p>
 		<div class="credits">
-			<div class="credits__name">Anton Kuznetsov</div>
+			<div class="credits__name">Anton @isnifer Kuznetsov</div>
 			<div class="credits__date">11/26/2015</div>
 		</div>
 	</div></section>
@@ -64,7 +64,6 @@
 	</div></section>
 	<section class="slide"><div>
 		<h2>What did I expect?</h2>
-		<strong>Angular approach:</strong>
 		<ul>
 			<li>Each field has independent validator</li>
 			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
@@ -133,7 +132,8 @@
 			<code> </code>
 			<code><mark>@Valya</mark></code>
 			<code><mark class="keyword">class</mark> <mark class="bool">Validator</mark> <mark class="keyword">extends</mark> <mark class="bool">Component</mark> {</code>
-			<code><mark class="comment">// ...</mark></code>
+			<code>	<mark class="comment">// Rendering Error</mark></code>
+			<code>	<mark class="comment">// Rendering Validator</mark></code>
 			<code>}</code>
 		</pre>
 	</div></section>
@@ -198,7 +198,6 @@
 	</div></section>
 	<section class="slide"><div>
 		<h2>What did I want?</h2>
-		<strong>Angular approach:</strong>
 		<ul>
 			<li><s>Each field has independent validator</s></li>
 			<li>Form has 3 flags: isValid, isInvalid, isValidating</li>
@@ -227,10 +226,10 @@
 		<h2>Foma API (WIP)</h2>
 		<span><strong>FormDemo</strong> got some "special" props:</span>
 		<ul>
-			<li>{Boolean} isValid</li>
-			<li>{Boolean} isInvalid</li>
-			<li>{Boolean} isValidating</li>
-            <li>{Array} invalidFields</li>
+			<li>isValid {Boolean}</li>
+			<li>isInvalid {Boolean}</li>
+			<li>isValidating {Boolean}</li>
+            <li>invalidFields {Array}</li>
 		</ul>
 	</div></section>
 	<section class="slide shout"><div>
@@ -238,10 +237,9 @@
 	</div></section>
 	<section class="slide"><div>
 		<h2>What did I want?</h2>
-		<strong>Angular approach:</strong>
 		<ul>
-			<li><s>Form has 3 flags: isValid, isInvalid, isValidating</s></li>
 			<li><s>Each field has independent validator</s></li>
+			<li><s>Form has 3 flags: isValid, isInvalid, isValidating</s></li>
 			<li><s>Form knows what fields are invalid</s></li>
 			<li><s>Form has API to manage validation (auto or manual)</s></li>
 		</ul>
